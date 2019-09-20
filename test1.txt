@@ -1,0 +1,5 @@
+This is a test file.
+HHHHH
+[End of file]
+This is a continutation of the file.
+[New end of file]
