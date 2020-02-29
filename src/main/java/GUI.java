@@ -12,13 +12,12 @@ public class GUI implements ActionListener {
     private static JMenuBar mainMenu;
     private static JMenu menu;
     private static JTextArea ta;
-    private static JTextField tf;
     private static JMenuItem open, newFile, save, saveAs, exit;
     private FileReader in = null;
     private BufferedReader br = null;
     private FileWriter out = null;
     private BufferedWriter bw = null;
-    private String name = "n";
+    private String name = "";
 
     public GUI() {
 
@@ -55,9 +54,7 @@ public class GUI implements ActionListener {
 
     } //Constructor
 
-    public static void main(String[] args) {
-        GUI g = new GUI();
-    } //main
+    public static void main(String[] args) { new GUI(); } //main
 
     private void setCurrentFile(String name) {
         this.name = name;
