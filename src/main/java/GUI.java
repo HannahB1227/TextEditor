@@ -73,6 +73,7 @@ public class GUI implements ActionListener {
             ta.requestFocus();
         } catch (IOException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(frame, "Error: Cannot open " + fileName, "Error", JOptionPane.ERROR_MESSAGE);
         } //catch
     } //loadFile
 
@@ -85,22 +86,25 @@ public class GUI implements ActionListener {
             ta.requestFocus();
         } catch (IOException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(frame, "Error: Cannot save " + fileName, "Error", JOptionPane.ERROR_MESSAGE);
         } //catch
     } //saveFile
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == open) {
             String openName = JOptionPane.showInputDialog(frame, "File Name: ", "Open File", JOptionPane.PLAIN_MESSAGE);
-            loadFile(openName);
-            setCurrentFile(openName);
+            if (!openName.equals("")) {
+                loadFile(openName);
+                setCurrentFile(openName);
+            } //if
         } //if
         else if (e.getSource() == newFile) {
             ta.setText("");
-            setCurrentFile("n");
+            setCurrentFile("");
         } //else-if
         else if (e.getSource() == save) {
             String s = getCurrentFile();
-            if (s.equalsIgnoreCase("n")) {
+            if (s.equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(frame,"This is a new file. You need to use 'Save As'","Error", JOptionPane.ERROR_MESSAGE);
             } //if
             else {
@@ -109,8 +113,10 @@ public class GUI implements ActionListener {
         } //else-if
         else if (e.getSource() == saveAs) {
             String saveAsName = JOptionPane.showInputDialog(frame, "File Name: ", "Save As", JOptionPane.PLAIN_MESSAGE);
-            saveFile(saveAsName);
-            setCurrentFile(saveAsName);
+            if (!saveAsName.equals("")) {
+                saveFile(saveAsName);
+                setCurrentFile(saveAsName);
+            } //if
         } //else-if
         else if (e.getSource() == exit) {
             int exitQA = JOptionPane.showConfirmDialog(frame, "Are you sure you want to exit?", "Exit", JOptionPane.YES_NO_OPTION);
